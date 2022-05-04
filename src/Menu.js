@@ -1,18 +1,6 @@
 import { Text, View, Button} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
-function MyTabBar({ }) {
-  return (
-    <Button
-      title="Go somewhere"
-      onPress={() => {
-        // Navigate using the `navigation` prop that you received
-        navigation.navigate('SomeScreen');
-      }}
-    />
-  );
-}
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'; 
 
 function HomeScreen() {
   return (
