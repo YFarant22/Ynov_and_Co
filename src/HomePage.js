@@ -1,8 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Image, Text, Button, StyleSheet, TextInput } from "react-native";
 import Menu from './Menu';
 
-function Homepage() {
+import data from "../assets/data.json"
+
+function Homepage({navigation: {navigate}}) {
+    const [idValue, setidV] = useState("");
+    const [pwValue, setpwV] = useState("");
+    const [student, setStudent] = useState(null);
+    const [pw, setPw] = useState(null);
+    const verify = () => {
+        if (idValue.length > 0) {
+            if (pwValue.length > 0) {
+                const found = data.students.find(({ email }) =>
+                idValue.match(
+                    new RegExp(
+                    `(${email})`,
+                    "i"
+                    )
+                ))
+                const found2 = data.students.find(({ password }) =>
+                idValue.match(
+                    new RegExp(
+                    `(${password})`,
+                    "i"
+                    )
+                ))
+                setStudent(found);
+                setPw(found2);
+                if (found && found2) {
+                    navigate('Menu');
+                }
+            }
+        }
+    };
     return (
         <View style={styles.container}>
             <View style={styles.homeTop}>
@@ -11,9 +42,9 @@ function Homepage() {
             </View>
 
             <View style={styles.homeBottom}>
-                <TextInput style={styles.put}> Adresse email Ynov </TextInput>
-                <TextInput style={styles.put}> Mot de passe </TextInput>
-                <Button onPress={Menu} title="Se connecter" color="#0fb19c" />
+                <TextInput style={styles.put} value={idValue}> Adresse email Ynov </TextInput>
+                <TextInput style={styles.put} value={pwValue}> Mot de passe </TextInput>
+                <Button onPress={() => verify} title="Se connecter" color="#0fb19c" />
             </View>
         </View>
     );

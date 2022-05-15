@@ -1,0 +1,12 @@
+{
+    "students": [
+      {
+        "firstname": "yann",
+        "lastname": "FARANT",
+        "favoriteColor": "blue",
+        "email" : "yann.farant@ynov.com",
+        "password" : "mdp",
+        "id": 0
+      }
+    ]
+}
